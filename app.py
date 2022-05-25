@@ -80,9 +80,9 @@ def dashboard():
 		#저장할 경로 + 파일명
 		f.save('./uploads/' + secure_filename(f.filename))
 		data = pd.read_csv('./uploads/' + secure_filename(f.filename), encoding='cp949')
-		pipeline = AutoDataClean(data, missing_num='interp')
+		pipeline = AutoDataClean(data)
 		pipeline.output.to_csv('./downloads/' + '(OUTPUT)' + secure_filename(f.filename), mode='w', encoding='cp949')
-		print(pipeline.output.columns)
+		#print(pipeline.output.columns)
 		draw_graph('corr', pipeline)
 		draw_graph('num', pipeline)
 		draw_graph('categ', pipeline)
@@ -110,7 +110,7 @@ def chart(name):
 	label = None
 	titles = None
 
-	print(pipeline.time_series, pipeline.categ_features, pipeline.num_features)
+	#print(pipeline.time_series, pipeline.categ_features, pipeline.num_features)
 
 	if text in pipeline.num_features:
 		if pipeline.time_series == False:
