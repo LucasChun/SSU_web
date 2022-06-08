@@ -80,7 +80,7 @@ def dashboard():
 		#저장할 경로 + 파일명
 		f.save('./uploads/' + secure_filename(f.filename))
 		data = pd.read_csv('./uploads/' + secure_filename(f.filename), encoding='cp949')
-		pipeline = AutoDataClean(data)
+		pipeline = AutoDataClean(data, outlier_param=request.form['param'])
 		pipeline.output.to_csv('./downloads/' + '(OUTPUT)' + secure_filename(f.filename), mode='w', encoding='cp949')
 		#print(pipeline.output.columns)
 		draw_graph('corr', pipeline)
