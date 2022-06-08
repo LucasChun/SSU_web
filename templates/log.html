@@ -26,9 +26,21 @@
             <option value="option3">timeseries</option>
         </select>
         <br>
-        <div class="layer1">{{ log | tojson }}</div>
-        <div class="layer2">{{ outlier | tojson }}</div>
-        <div class="layer3">{{ timeseries | tojson }}</div>
+        <div class="layer1">
+            {% for n in log %}
+            {{ n | tojson }}<br>
+            {% endfor %}
+        </div>
+        <div class="layer2">
+            {% for n in outlier %}
+            {{ n | tojson }}<br>
+            {% endfor %}
+        </div>
+        <div class="layer3">
+            {% for n in timeseries %}
+            {{ n | tojson }}<br>
+            {% endfor %}
+        </div>
     </div>
     <script>
         $('#selectBox').change(function () {
