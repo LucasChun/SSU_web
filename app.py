@@ -154,7 +154,7 @@ def log():
 		tmp = open('./autoclean.log', 'rt', encoding='UTF8')
 		log = tmp.readlines()
 		tmp.close()
-		return render_template('log.html', log=log, outlier=pipeline.added_outlier, timeseries=str(pipeline.added_timecycle))
+		return render_template('log.html', log=log, outlier=pipeline.added_outlier, timeseries=pipeline.added_timecycle)
 	else:
 		return render_template('page_not_found.html')
 
